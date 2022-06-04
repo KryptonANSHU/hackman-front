@@ -51,21 +51,6 @@ function profile(params) {
     
         <div className="flex flex-col conte">
         <Navbar />
-
-        <div className="doc-profile">
-            <Image src={doctor_img} className="doc-img"/>
-            <div className='doc-data'>
-                <h1 className='ductur'>Name: {router.query.name}</h1>
-                <h1 className='ductor'>Category: {router.query.category}</h1>
-                <h1 className='ductor'>Address: {router.query.address}</h1>
-                <h1 className='ductor'>Certificate Ipfs link: {router.query.address}</h1>
-                
-            </div>
-        </div>
-               <Link href='/doctor/upload'>
-                    <button> Upload Prescription </button>
-               </Link>
-        
         <div className="render-cards">
         <Card />
         <Card />
