@@ -1,6 +1,8 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/globals.css";
 import '../styles/index.css'
+import '../styles/doctor.css'
+import '../styles/card.css'
 
 import { useEffect } from "react";
 

@@ -6,15 +6,15 @@ import {FaStar} from 'react-icons/fa'
 function Card(){
     return(
         <div>
-            <div className="card">
+            <div className="doc-card">
 
-                <div className="card-img">
+                <div className="doc-card-img">
             
                 <Image src={logo}
             alt="logo"
-            className="logo-img"/>
+            className="doc-logo-img"/>
 
-            <div className="rating">
+            <div className="doc-rating">
             <FaStar />
             <FaStar />
             <FaStar />
@@ -24,7 +24,7 @@ function Card(){
             </div>
 
                 </div>
-            <div className="doctor-problem">
+            <div className="doc-doctor-problem">
                 I have treated so and so. I have treated so and so. I have treated so and so. I have treated so and so. I have treated so and so. 
                 </div>
             </div>

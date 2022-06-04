@@ -5,7 +5,7 @@
     margin-right: 5px;
     justify-content: center;
 }
-.card {
+.doc-card {
     border: #000;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -14,7 +14,7 @@
     height: 420px;
     color: #000;
 }
-.card-img{
+.doc-card-img{
     position: relative;
     width: 240px;
     height: auto;
@@ -23,7 +23,7 @@
     padding: 5px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.rating{
+.doc-rating{
     /* border: 2px solid black; */
     position: absolute;
     top: 10px;
@@ -32,9 +32,17 @@
     color: rgb(184, 193, 5);
 }
 
-.logo-img{
+.doc-logo-img{
     height: 70px;
 }
-.doctor-problem{
+.doc-doctor-problem{
     margin-top: 15px;
+}
+.doc-profile{
+    width: 20%;
+    height: 20%;
+}
+.doc-img{
+    width: 20%;
+    height: 10%;
 }
