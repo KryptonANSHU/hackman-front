@@ -7,20 +7,40 @@ import { DocForm } from '../components/DocForm'
 
 
 function Home() {
-  return (
-    <div className='con'>
 
-    <div className='one'>
-    <Link href='/doctor/index'>
-      <a>I am A doctor</a>
-    </Link>
+  function func1(e){
+    e.currentTarget.parentElement.classList.add('hover-left')
+
+  }
+  
+  
+  function func2(e){
+    e.currentTarget.parentElement.classList.remove('hover-left')
+  }
+  
+  function func3(e){
+    e.currentTarget.parentElement.classList.add('hover-right')
+  
+  }
+  function func4(e){
+    e.currentTarget.parentElement.classList.remove('hover-right')
+   
+  }
+ 
+
+
+  return (
+    <div className='outer' >
+
+    <div className='left' onMouseEnter={func1} onMouseLeave={func2}>
+    <a>
+
       <DocForm />
+    </a>
     </div>
 
-    <div className='two'>
-    <Link href='/patient'>
-      <a>I am a  Patient</a>
-    </Link>
+    <div className='right' onMouseEnter={func3} onMouseLeave={func4}>
+    <a> I am a Patient </a>
   
     </div>
     

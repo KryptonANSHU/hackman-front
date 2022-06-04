@@ -5,7 +5,7 @@ export const DocForm = () => {
   
   return (
 <>
-
+<h1 style={{ color: 'white', textAlign: 'center' }}>Doctor </h1>
 <form action='/doctor'>
   <div className="form-group">
     <label htmlFor="exampleInputname1">Name</label>

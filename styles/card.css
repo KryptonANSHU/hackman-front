@@ -4,6 +4,11 @@
     overflow-x: hidden;
     margin-right: 5px;
     justify-content: center;
+    /* background-color: rgb(196, 219, 219); */
+}
+
+.conte{
+    /* background-color: rgb(156, 156, 208) */
 }
 .doc-card {
     border: #000;
@@ -13,6 +18,7 @@
     width: 400px;
     height: 420px;
     color: #000;
+    background-color: rgb(196, 230, 255);
 }
 .doc-card-img{
     position: relative;
@@ -27,22 +33,48 @@
     /* border: 2px solid black; */
     position: absolute;
     top: 10px;
-    right: -65px;
+    right: -80px;
     display: flex;
     color: rgb(184, 193, 5);
 }
 
 .doc-logo-img{
-    height: 70px;
+    width: 20%;
+    height: 20%;
 }
 .doc-doctor-problem{
     margin-top: 15px;
 }
 .doc-profile{
-    width: 20%;
-    height: 20%;
+    /* border: 2px solid black; */
+    border-radius: 20px;
+    margin: auto;
+    width: 30%;
+    display: flex;
 }
+
+
 .doc-img{
-    width: 20%;
-    height: 10%;
+    width: 20px;
+}
+
+.doc-data{
+    height: inherit;
+    /* border: 2px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.doc-profile button{
+    background-color: rgb(157, 157, 202);
+    padding: 10px;
+    margin: 20px;
+    transition: all 200ms ease;
+}
+
+.doc-profile button:hover{
+    cursor: pointer;
+    background-color: aliceblue;
 }
