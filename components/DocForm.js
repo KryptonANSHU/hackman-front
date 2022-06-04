@@ -1,15 +1,11 @@
 import React from 'react'
 import { create } from 'ipfs-http-client'
 import { useState } from 'react'
-import Ipfsupload from './Ipfsupload'
-<<<<<<< HEAD
+// import Ipfsupload from './Ipfsupload'
 import {useQuery} from 'react-query'
-import { create } from 'ipfs-http-client'
 
-=======
 
-//import {useQuery} from 'react-query'
->>>>>>> 9b7c1090c1a330c983fe3a9269796cff4a7c96cd
+
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
 
@@ -100,7 +96,7 @@ export const DocForm = () => {
      />
   </div>
 
-<<<<<<< HEAD
+
   {/* <Ipfsupload
     title = "Upload Certificate" 
     name ='ipfslink'
@@ -110,24 +106,6 @@ export const DocForm = () => {
    <input type="file"  onChange={onChange}/>
     
     <input type='hidden' name='hidden' value={fileUrl} />
-=======
-  <div className="form-group">
-      <h1>Upload your certificate</h1>
-      <input
-        type="file"
-        name="ipfs"
-        onChange={handleChange}
-      />
-      {/* {
-        data.ipfs && (
-          <img src={data.ipfs} width="100px"/>
-        )
-      } */}
-    </div>
-{/*   
-  <label class="form-label" for="photo">Upload Photo</label>
-<input type="file" class="form-control" id="photo" /> */}
->>>>>>> 9b7c1090c1a330c983fe3a9269796cff4a7c96cd
 
 <br></br>
 
