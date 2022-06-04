@@ -1,37 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,600&display=swap');
+
+
+
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0px;
     box-sizing: border-box;
-/* background-color: aquamarine; */
+}
+body{
+font-family: 'Nunito Sans', sans-serif;
+overflow: hidden;
 }
 
-.con{
-    border: 2px solid black;
-    height: 80vh;
+.outer{
     display: flex;
-    width: 80vw;
-    margin: auto;
-    display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.outer.hover-left .left{
+    width: 65%;
 }
 
-.one{
+.outer.hover-left .right{
+    width: 35%;
+}
+
+.outer.hover-right .right{
+    width: 65%;
+}
+.outer.hover-right .left{
+    width: 35%;
+}
+
+
+/* ----------------------------------------------------------Left (PS5)---------------------------------------------------- */
+
+.left{
     height: inherit;
-    width: 40%;
-    /* border: 2px solid black; */
+    width: 50%;
+    transition: all 1.3s ease;
+    background: rgba(80, 60, 240, 0.6);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
-
-
-.two{
+.left::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
     height: inherit;
-    width: 40%;
-    /* border: 2px solid black; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: inherit;
+    background-image: url(../public/doc-img.jpg);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center ;
+    z-index: -1;
 }
 
 
+/* ---------------------------------------------------Right---------------------------------------------- */
+
+.right{
+    height: inherit;
+    width: 50%;
+    transition: all 1.3s ease;
+    /* border-left: 2px solid black; */
+    background: rgb(23 36 26 / 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.right::before{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: inherit;
+    width: inherit;
+    background-image: url(../public/pat-img.jpg);
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center;
+    z-index: -1;
+    /* background-position: center;  */
+}
+/* ------------------------------------------------------------------------------------------------ */
+a{
+    opacity: 0;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 20px 20px;
+    /* border: 3px solid white; */
+    transition: all 1.3s ease;
+}
+
+
+.outer.hover-right .right a{
+    opacity: 1;
+}
+
+
+.outer.hover-left .left a{
+    opacity: 1;
+}
