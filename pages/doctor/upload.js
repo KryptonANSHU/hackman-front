@@ -1,15 +1,20 @@
 import React,{useState} from 'react'
 import { create } from 'ipfs-http-client'
+import Hackman from './Hackman.json'
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
 
+
 const upload = () => {
-  const [fileUrl, updateFileUrl] = useState(``)
+  // const [fileUrl, updateFileUrl] = useState(``)
   const [data,setData]=useState({
     ipfs:"",
     details:"",
     address:""
   })
+  const contractAddress="0x60CCDAf459252a1930D7AbA7497Eea0CdC39b164"
+
+  
 
   // async function onChange(e) {
   //   const file = e.target.files[0]
@@ -44,6 +49,26 @@ const upload = () => {
   function handleSubmit(){
     e.preventDefault()
   }
+
+  const castSignature = async () => {
+    const { ethereum } = window
+    if (ethereum) {
+      const provider = new ethers.providers.Web3Provider(ethereum)
+      const prescripContract = provider.getSigner()
+      const contract = new ethers.Contract(
+        contractAddress,
+        Hackman.abi,
+        prescripContract
+      )
+      const data = contract.upload(data.ipfs, data.details)
+      await data
+      data.then((value) => {
+        console.log("Transaction hash is "+value.hash)
+        setTxHash(value.hash)
+        setGotTxn(true);
+      })
+    }
+  }
   return (
     <div>
     
@@ -57,8 +82,8 @@ const upload = () => {
         onChange={handleChange}
       />
       {
-        fileUrl && (
-          <img src={fileUrl} width="100px"/>
+        data.ipfs && (
+          <img src={data.ipfs} width="100px"/>
         )
       }
     </div>
@@ -84,7 +109,7 @@ const upload = () => {
 
 <br></br>
 
-  <button class="btn btn-primary">Submit</button>
+  <button onClick={castSignature} class="btn btn-primary">Submit</button>
 </form>
 
     </div>
