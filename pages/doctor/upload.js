@@ -30,43 +30,32 @@ const upload = () => {
   //     console.log('Error uploading file: ', error)
   //   }  
   // }
-  function handleChangeDet(e) {
-    setData.details(e.target.value)
-  }
 
-  function handleChangeAdd(e) {
-    console.log('title', e.target.value)
-    setData.address(e.target.value)
-  }
   async function handleChange(e){
-    // const {name,value,type, files}=event.target
-    const files = e.target.files[0]
+    const {name,value,type, files}=e.target
+    // files = e.target.files[0]
     console.log("heyy", files)
     try {
-          const added = await client.add(files)
+          const added = await client.add(files[0])
           const temp = await `https://ipfs.infura.io/ipfs/${added.path}`
           console.log("temp", temp)
           setUrl(temp)
-          // setData(data => ({
-          //   ...data,
-          //   [data.ipfs]:url
-          // }))
-          console.log("url: ", url)
-          // console.log("ipfs", data.ipfs)
         } catch (error) {
           console.log('Error uploading file: ', error)
         }  
-    // setData(prevData=>{
-    //   return {
-    //   ...prevData,
-    //   [name]:type==="file"?url:value
-    //   }
-    // })
-    // console.log(data)
+    
   }
 
   function handleSubmit(){
     e.preventDefault()
+    setData(prevData=>{
+      return {
+      ...prevData,
+      [name]:type==="file"?url:value
+      }
+    })
+    console.log(data)
+
   }
 
   const castSignature = async () => {
@@ -110,7 +99,7 @@ const upload = () => {
     <input type="text" class="form-control" id="exampleInputname1" 
     aria-describedby="nameHelp" placeholder="Enter Name"
     value={data.details}
-    onChange={handleChangeDet}
+    onChange={handleChange}
     name="details"
     />
   </div>
@@ -119,7 +108,7 @@ const upload = () => {
     <input type="text" class="form-control" id="exampleInputtype1" aria-describedby="nameHelp"
      placeholder="Enter type" 
      value={data.address}
-     onChange={handleChangeAdd}
+     onChange={handleChange}
      name="address"
      />
   </div>
@@ -127,7 +116,7 @@ const upload = () => {
 
 <br></br>
 
-  <button onClick={castSignature} class="btn btn-primary">Submit</button>
+  <button onClick={handleSubmit} class="btn btn-primary">Submit</button>
 
     </div>
   )
