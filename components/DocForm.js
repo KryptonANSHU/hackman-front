@@ -1,15 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
 import Ipfsupload from './Ipfsupload'
+import {useQuery} from 'react-query'
+const client = create('https://ipfs.infura.io:5001/api/v0')
 
 export const DocForm = () => {
   
+  // useQuery('doctor-data', ()=>{
+
+  // })
+
   const [user,setUser] = useState({ 
     name:"" , category: "" , address: ""
   })
   let name,value;
 
   function handleInputs(e){
+    e.preventDefault();
       console.log(e);
     name=e.target.name;    
     value=e.target.value;

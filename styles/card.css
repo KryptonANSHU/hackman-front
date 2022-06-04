@@ -59,6 +59,7 @@
 }
 
 .doc-data{
+    width: 100%;
     height: inherit;
     /* border: 2px solid black; */
     display: flex;
