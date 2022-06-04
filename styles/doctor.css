@@ -1,0 +1,26 @@
+.navbar {
+    width: 100%;
+    float: left;
+    background: #2980B9;  
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);
+    color: rgb(0, 0, 6);
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    padding: 8px 8px 3px 8px;
+    align-content: center;
+}
+
+.logo-name {
+    font-size: 35px;
+    margin-left: 14px;
+}
+
+.connect-wallet {
+    float: right;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 8px;
+    top: 100;
+    left: auto;
+}

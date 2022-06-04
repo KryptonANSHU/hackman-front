@@ -1,10 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/Home.module.css'
 
-import Doctor from './doctor.js'
-import Patient from './patient'
+
 import { DocForm } from '../components/DocForm'
 
 
@@ -13,7 +11,7 @@ function Home() {
     <div className='con'>
 
     <div className='one'>
-    <Link href='/doctor'>
+    <Link href='/doctor/index'>
       <a>I am A doctor</a>
     </Link>
       <DocForm />

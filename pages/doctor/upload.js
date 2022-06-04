@@ -1,4 +1,5 @@
 import React from 'react'
+import Ipfsupload from '../../components/Ipfsupload'
 
 const upload = () => {
   return (
@@ -7,8 +8,12 @@ const upload = () => {
 <form action='/doctor'>
   <div class="form-group">
   
-  <label class="form-label" for="prescription">Upload Prescription</label>
-<input type="file" class="form-control" id="prescription"/>
+  {/* <label class="form-label" for="prescription">Upload Prescription</label>
+<input type="file" class="form-control" id="prescription"/> */}
+
+<Ipfsupload 
+  title = "Upload Prescription"
+/>
 
     <label for="exampleInputname1">Disease</label>
     <input type="text" class="form-control" id="exampleInputname1" aria-describedby="nameHelp" placeholder="Enter Name" />
