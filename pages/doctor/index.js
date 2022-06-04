@@ -15,7 +15,10 @@ function profile(params) {
 
         <div className="doc-profile">
             <Image src={doctor_img} className="doc-img"/>
-            
+            <Link href='/doctor/upload'>
+            <button> Upload Prescription </button>
+    </Link>
+        
         </div>
         <div className="render-cards">
         <Card />

@@ -41,10 +41,13 @@ const upload = () => {
     console.log(data)
   }
 
+  function handleSubmit(){
+    e.preventDefault()
+  }
   return (
     <div>
     
-<form action='/doctor'>
+<form action='/doctor' onSubmit={handleSubmit}>
   <div class="form-group">
   <div className="App">
       <h1>Upload Prescription</h1>
@@ -81,7 +84,7 @@ const upload = () => {
 
 <br></br>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button class="btn btn-primary">Submit</button>
 </form>
 
     </div>
