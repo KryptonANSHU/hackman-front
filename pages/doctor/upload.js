@@ -8,12 +8,15 @@ const client = create('https://ipfs.infura.io:5001/api/v0')
 
 const upload = () => {
   // const [fileUrl, updateFileUrl] = useState(``)
-  // const [url,setUrl] = useState(``)
-  const [data,setData]=useState({
-    ipfs:"",
-    details:"",
-    address:""
-  })
+  const [url,setUrl] = useState(``)
+  const [dets, setDets] = useState("")
+  const [add,setAdd] = useState("")
+  // const [data,setData]=useState({
+  //   ipfs:"",
+  //   details:"",
+  //   address:""
+  // })
+
   const contractAddress="0x60CCDAf459252a1930D7AbA7497Eea0CdC39b164"
 
   
@@ -30,31 +33,42 @@ const upload = () => {
   //     console.log('Error uploading file: ', error)
   //   }  
   // }
+  function handleChangedets(e){
+    setDets(e.target.value)
+  }
+  function handleChangeadd(e){
+    setAdd(e.target.value)
+  }
 
   async function handleChange(e){
-    const {name,value,type, files}=e.target
+    const {files}=e.target
     const url=""
     // files = e.target.files[0]
     //console.log("heyy", files)
     try {
           const added = await client.add(files[0])
           url = await `https://ipfs.infura.io/ipfs/${added.path}`
+          setUrl(url)
           //console.log("temp", temp)
           //setUrl(temp)
         } catch (error) {
           console.log('Error uploading file: ', error)
         }  
-        setData(prevData=>{
-          return {
-          ...prevData,
-          [name]:type==="file"?url:value
-          }
-        })
-        console.log(data)
+        // setData(prevData=>{
+        //   return {
+        //   ...prevData,
+        //   [name]:type==="file"?url:value
+        //   }
+        // })
+        // console.log(data)
   }
 
-  function handleSubmit(){
+  function handleSubmit(e){
     e.preventDefault()
+    console.log("ipfs: ", url);
+    console.log("detail: ", dets)
+    console.log("address: ", add)
+    castSignature()
   }
 
   const castSignature = async () => {
@@ -67,12 +81,12 @@ const upload = () => {
         Hackman.abi,
         prescripContract
       )
-      const data = contract.upload(data.ipfs, data.details)
+      const data = contract.upload(url, dets)
       await data
       data.then((value) => {
         console.log("Transaction hash is "+value.hash)
-        setTxHash(value.hash)
-        setGotTxn(true);
+        // setTxHash(value.hash)
+        // setGotTxn(true);
       })
     }
   }
@@ -87,18 +101,18 @@ const upload = () => {
         name="ipfs"
         onChange={handleChange}
       />
-      {
+      {/* {
         data.ipfs && (
           <img src={data.ipfs} width="100px"/>
         )
-      }
+      } */}
     </div>
 
     <label for="exampleInputname1">Details</label>
     <input type="text" class="form-control" id="exampleInputname1" 
     aria-describedby="nameHelp" placeholder="Enter Name"
-    value={data.details}
-    onChange={handleChange}
+    value={dets}
+    onChange={handleChangedets}
     name="details"
     />
   </div>
@@ -106,8 +120,8 @@ const upload = () => {
     <label for="exampleInputtype1">Public Address</label>
     <input type="text" class="form-control" id="exampleInputtype1" aria-describedby="nameHelp"
      placeholder="Enter type" 
-     value={data.address}
-     onChange={handleChange}
+     value={add}
+     onChange={handleChangeadd}
      name="address"
      />
   </div>
