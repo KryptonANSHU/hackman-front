@@ -8,7 +8,7 @@ const client = create('https://ipfs.infura.io:5001/api/v0')
 
 const upload = () => {
   // const [fileUrl, updateFileUrl] = useState(``)
-  const [url,setUrl] = useState(``)
+  // const [url,setUrl] = useState(``)
   const [data,setData]=useState({
     ipfs:"",
     details:"",
@@ -33,29 +33,28 @@ const upload = () => {
 
   async function handleChange(e){
     const {name,value,type, files}=e.target
+    const url=""
     // files = e.target.files[0]
-    console.log("heyy", files)
+    //console.log("heyy", files)
     try {
           const added = await client.add(files[0])
-          const temp = await `https://ipfs.infura.io/ipfs/${added.path}`
-          console.log("temp", temp)
-          setUrl(temp)
+          url = await `https://ipfs.infura.io/ipfs/${added.path}`
+          //console.log("temp", temp)
+          //setUrl(temp)
         } catch (error) {
           console.log('Error uploading file: ', error)
         }  
-    
+        setData(prevData=>{
+          return {
+          ...prevData,
+          [name]:type==="file"?url:value
+          }
+        })
+        console.log(data)
   }
 
   function handleSubmit(){
     e.preventDefault()
-    setData(prevData=>{
-      return {
-      ...prevData,
-      [name]:type==="file"?url:value
-      }
-    })
-    console.log(data)
-
   }
 
   const castSignature = async () => {
@@ -79,7 +78,7 @@ const upload = () => {
   }
   return (
     <div>
-    
+    <form>
   <div className="form-group">
   <div className="App">
       <h1>Upload Prescription</h1>
@@ -117,7 +116,7 @@ const upload = () => {
 <br></br>
 
   <button onClick={handleSubmit} class="btn btn-primary">Submit</button>
-
+</form>
     </div>
   )
 }
