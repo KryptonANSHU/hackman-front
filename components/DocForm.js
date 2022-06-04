@@ -1,9 +1,15 @@
 import React from 'react'
+import { create } from 'ipfs-http-client'
 import { useState } from 'react'
 import Ipfsupload from './Ipfsupload'
+<<<<<<< HEAD
 import {useQuery} from 'react-query'
 import { create } from 'ipfs-http-client'
 
+=======
+
+//import {useQuery} from 'react-query'
+>>>>>>> 9b7c1090c1a330c983fe3a9269796cff4a7c96cd
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
 
@@ -15,7 +21,7 @@ export const DocForm = () => {
   
   const [fileUrl, updateFileUrl] = useState(``)
   const [user,setUser] = useState({ 
-    name:"" , category: "" , address: ""
+    name:"" , category: "" , address: "", url:""
   })
 
   async function onChange(e) {
@@ -35,13 +41,30 @@ export const DocForm = () => {
 
   let name,value;
 
+  async function handleChange(e){
+    const {files}=e.target
+    const url=""
+    try {
+          const added = await client.add(files[0])
+          url = await `https://ipfs.infura.io/ipfs/${added.path}`
+          console.log(url)
+          // setUser({...user,[name]:value});
+          // console.log(user)
+          // setUrl(url)
+        } catch (error) {
+          console.log('Error uploading file: ', error)
+        }  
+  }
+
   function handleInputs(e){
+       
     e.preventDefault();
       console.log(e);
     name=e.target.name;    
     value=e.target.value;
 
     setUser({...user,[name]:value});
+    console.log(user)
   }
   
 
@@ -77,6 +100,7 @@ export const DocForm = () => {
      />
   </div>
 
+<<<<<<< HEAD
   {/* <Ipfsupload
     title = "Upload Certificate" 
     name ='ipfslink'
@@ -86,6 +110,24 @@ export const DocForm = () => {
    <input type="file"  onChange={onChange}/>
     
     <input type='hidden' name='hidden' value={fileUrl} />
+=======
+  <div className="form-group">
+      <h1>Upload your certificate</h1>
+      <input
+        type="file"
+        name="ipfs"
+        onChange={handleChange}
+      />
+      {/* {
+        data.ipfs && (
+          <img src={data.ipfs} width="100px"/>
+        )
+      } */}
+    </div>
+{/*   
+  <label class="form-label" for="photo">Upload Photo</label>
+<input type="file" class="form-control" id="photo" /> */}
+>>>>>>> 9b7c1090c1a330c983fe3a9269796cff4a7c96cd
 
 <br></br>
 

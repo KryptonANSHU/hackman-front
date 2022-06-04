@@ -17,7 +17,7 @@ const upload = () => {
   //   address:""
   // })
 
-  const contractAddress="0x60CCDAf459252a1930D7AbA7497Eea0CdC39b164"
+  const contractAddress="0xab70eB5255f74Ebe0fb5A4Cb9b293B78e0070125"
 
   
 
