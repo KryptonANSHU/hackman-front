@@ -31,7 +31,7 @@ function profile(params) {
                 <h1 className='ductur'>Name: {router.query.name}</h1>
                 <h1 className='ductor'>Category: {router.query.category}</h1>
                 <h1 className='ductor'>Address: {router.query.address}</h1>
-                <h1 className='ductor'>Certificate Ipfs link: {router.query.address}</h1>
+                <h1 className='ductor'>Certificate Ipfs link: {router.query.hidden}</h1>
                 
             </div>
         </div>

@@ -21,15 +21,14 @@ function Ipfsupload(props) {
   return (
     <div className="App">
       <h1>{props.title}</h1>
-      <input
-        type="file"
-        onChange={onChange}
-      />
+      <input type="file" onChange={onChange} />
+
       {
         fileUrl && (
           <img src={fileUrl} width="600px"/>
         )
       }
+      
     </div>
   );
 }

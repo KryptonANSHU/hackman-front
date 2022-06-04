@@ -2,17 +2,37 @@ import React from 'react'
 import { useState } from 'react'
 import Ipfsupload from './Ipfsupload'
 import {useQuery} from 'react-query'
+import { create } from 'ipfs-http-client'
+
 const client = create('https://ipfs.infura.io:5001/api/v0')
+
 
 export const DocForm = () => {
   
   // useQuery('doctor-data', ()=>{
 
   // })
-
+  
+  const [fileUrl, updateFileUrl] = useState(``)
   const [user,setUser] = useState({ 
     name:"" , category: "" , address: ""
   })
+
+  async function onChange(e) {
+    const file = e.target.files[0]
+    try {
+      const added = await client.add(file)
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      updateFileUrl(url)
+      console.log('hi')
+      console.log(added.path)
+    } catch (error) {   
+      console.log('Error uploading file: ', error)
+    }  
+  }
+
+
+
   let name,value;
 
   function handleInputs(e){
@@ -23,6 +43,9 @@ export const DocForm = () => {
 
     setUser({...user,[name]:value});
   }
+  
+
+ 
 
   return (
 <>
@@ -50,16 +73,19 @@ export const DocForm = () => {
     <label htmlFor="inputAddress">Address</label>
     <input type="text" className="form-control" id="inputAddress" name='address' placeholder="1234 Main St"
     value={user.address}
-    onChange={handleInputs }
+    onChange={handleInputs}
      />
   </div>
 
-  <Ipfsupload
-    title = "Upload Certificate"
-   />
-{/*   
-  <label class="form-label" for="photo">Upload Photo</label>
-<input type="file" class="form-control" id="photo" /> */}
+  {/* <Ipfsupload
+    title = "Upload Certificate" 
+    name ='ipfslink'
+    value ={user.ipfslink}
+   /> */}
+
+   <input type="file"  onChange={onChange}/>
+    
+    <input type='hidden' name='hidden' value={fileUrl} />
 
 <br></br>
 
