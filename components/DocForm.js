@@ -2,10 +2,18 @@ import React from 'react'
 import { create } from 'ipfs-http-client'
 import { useState } from 'react'
 import Ipfsupload from './Ipfsupload'
+<<<<<<< HEAD
+=======
+import {useQuery} from 'react-query'
+>>>>>>> 0c937cf42f7ad537044476e24a96e6bf17a3b71f
 const client = create('https://ipfs.infura.io:5001/api/v0')
 
 export const DocForm = () => {
   
+  // useQuery('doctor-data', ()=>{
+
+  // })
+
   const [user,setUser] = useState({ 
     name:"" , category: "" , address: "", url:""
   })
@@ -27,8 +35,14 @@ export const DocForm = () => {
   }
 
   function handleInputs(e){
+<<<<<<< HEAD
     
     name=e.target.value;    
+=======
+    e.preventDefault();
+      console.log(e);
+    name=e.target.name;    
+>>>>>>> 0c937cf42f7ad537044476e24a96e6bf17a3b71f
     value=e.target.value;
 
     setUser({...user,[name]:value});
