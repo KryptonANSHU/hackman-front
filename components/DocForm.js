@@ -1,20 +1,38 @@
 import React from 'react'
+import { create } from 'ipfs-http-client'
 import { useState } from 'react'
 import Ipfsupload from './Ipfsupload'
+const client = create('https://ipfs.infura.io:5001/api/v0')
 
 export const DocForm = () => {
   
   const [user,setUser] = useState({ 
-    name:"" , category: "" , address: ""
+    name:"" , category: "" , address: "", url:""
   })
   let name,value;
 
+  async function handleChange(e){
+    const {files}=e.target
+    const url=""
+    try {
+          const added = await client.add(files[0])
+          url = await `https://ipfs.infura.io/ipfs/${added.path}`
+          console.log(url)
+          // setUser({...user,[name]:value});
+          // console.log(user)
+          // setUrl(url)
+        } catch (error) {
+          console.log('Error uploading file: ', error)
+        }  
+  }
+
   function handleInputs(e){
-      console.log(e);
-    name=e.target.name;    
+    
+    name=e.target.value;    
     value=e.target.value;
 
     setUser({...user,[name]:value});
+    console.log(user)
   }
 
   return (
@@ -47,9 +65,19 @@ export const DocForm = () => {
      />
   </div>
 
-  <Ipfsupload
-    title = "Upload Certificate"
-   />
+  <div className="form-group">
+      <h1>Upload your certificate</h1>
+      <input
+        type="file"
+        name="ipfs"
+        onChange={handleChange}
+      />
+      {/* {
+        data.ipfs && (
+          <img src={data.ipfs} width="100px"/>
+        )
+      } */}
+    </div>
 {/*   
   <label class="form-label" for="photo">Upload Photo</label>
 <input type="file" class="form-control" id="photo" /> */}
