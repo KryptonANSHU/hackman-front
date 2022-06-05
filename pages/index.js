@@ -40,7 +40,7 @@ function Home() {
     </div>
 
     <div className='right' onMouseEnter={func3} onMouseLeave={func4}>
-      <Link href="/patient/">
+      <Link href="/patient">
       <a> I am a Patient </a>
       </Link>
     
