@@ -17,7 +17,7 @@ export const DocForm = () => {
   
   const [fileUrl, updateFileUrl] = useState(``)
   const [user,setUser] = useState({ 
-    name:"" , category: "" , address: "", url:""
+    name:"" , category: "" , address: ""
   })
 
   async function onChange(e) {
@@ -32,8 +32,6 @@ export const DocForm = () => {
       console.log('Error uploading file: ', error)
     }  
   }
-
-
 
   let name,value;
 
@@ -62,9 +60,7 @@ export const DocForm = () => {
     setUser({...user,[name]:value});
     console.log(user)
   }
-  
 
- 
 
   return (
 <>

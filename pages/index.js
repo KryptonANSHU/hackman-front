@@ -89,6 +89,7 @@ function Home() {
 
 
   return (
+<<<<<<< HEAD
     <div>
       {!connected?
       <div className="flex h-screen justify-center align-center">
@@ -108,6 +109,22 @@ function Home() {
         </Link>
       </div>
       
+=======
+    <div className='outer' >
+
+    <div className='left' onMouseEnter={func1} onMouseLeave={func2}>
+    <a>
+
+      <DocForm />
+    </a>
+    </div>
+
+    <div className='right' onMouseEnter={func3} onMouseLeave={func4}>
+      <Link href="/patient">
+      <a> I am a Patient </a>
+      </Link>
+    
+>>>>>>> 6a72c5b2a8a78025f4fab855120617f82bbf3ae7
   
       </div>
 }

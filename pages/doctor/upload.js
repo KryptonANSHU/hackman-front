@@ -7,6 +7,7 @@ const client = create('https://ipfs.infura.io:5001/api/v0')
 
 
 const upload = () => {
+<<<<<<< HEAD
   // const [fileUrl, updateFileUrl] = useState(``)
   const [url,setUrl] = useState(``)
   const [dets, setDets] = useState("")
@@ -18,59 +19,61 @@ const upload = () => {
   }
   function handleChangeadd(e){
     setAdd(e.target.value)
+=======
+  const [fileUrl, updateFileUrl] = useState(``)
+  const [user,setUser] = useState({ 
+    details:"" , publicaddress: ""
+  })
+
+  async function onChange(e) {
+    const file = e.target.files[0]
+    try {
+      const added = await client.add(file)
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      updateFileUrl(url)
+      console.log('hi')
+      console.log(added.path)
+    } catch (error) {   
+      console.log('Error uploading file: ', error)
+    }  
+>>>>>>> 6a72c5b2a8a78025f4fab855120617f82bbf3ae7
   }
+
+
+
+  let name,value;
 
   async function handleChange(e){
     const {files}=e.target
     const url=""
-    // files = e.target.files[0]
-    //console.log("heyy", files)
     try {
           const added = await client.add(files[0])
           url = await `https://ipfs.infura.io/ipfs/${added.path}`
-          setUrl(url)
-          //console.log("temp", temp)
-          //setUrl(temp)
+          console.log(url)
+          // setUser({...user,[name]:value});
+          // console.log(user)
+          // setUrl(url)
         } catch (error) {
           console.log('Error uploading file: ', error)
         }  
-        // setData(prevData=>{
-        //   return {
-        //   ...prevData,
-        //   [name]:type==="file"?url:value
-        //   }
-        // })
-        // console.log(data)
   }
 
-  function handleSubmit(e){
-    e.preventDefault()
-    console.log("ipfs: ", url);
-    console.log("detail: ", dets)
-    console.log("address: ", add)
-    castSignature()
-  }
+  function handleInputs(e){
+       
+    e.preventDefault();
+      console.log(e);
+    name=e.target.name;    
+    value=e.target.value;
 
-  const castSignature = async () => {
-    const { ethereum } = window
-    if (ethereum) {
-      const provider = new ethers.providers.Web3Provider(ethereum)
-      const prescripContract = provider.getSigner()
-      const contract = new ethers.Contract(
-        contractAddress,
-        Hackman.abi,
-        prescripContract
-      )
-      const data = contract.upload(url, dets)
-      await data
-      data.then((value) => {
-        console.log("Transaction hash is "+value.hash)
-        // setTxHash(value.hash)
-        // setGotTxn(true);
-      })
-    }
+    setUser({...user,[name]:value});
+    console.log(user)
   }
+  
+
+ 
+
   return (
+<<<<<<< HEAD
     <div>
     <form action='/doctor'>
   <div className="form-group">
@@ -87,31 +90,41 @@ const upload = () => {
         )
       } */}
     </div>
+=======
+<>
+<h1 style={{ color: 'white', textAlign: 'center' }}>Doctor </h1>
+>>>>>>> 6a72c5b2a8a78025f4fab855120617f82bbf3ae7
 
-    <label for="exampleInputname1">Details</label>
-    <input type="text" class="form-control" id="exampleInputname1" 
-    aria-describedby="nameHelp" placeholder="Enter Name"
-    value={dets}
-    onChange={handleChangedets}
-    name="details"
+
+<form action='/doctor'>
+
+
+<input type="file"  onChange={onChange}/>
+    
+    <input type='hidden' name='hidden2' value={fileUrl} />
+    
+  <div className="form-group">
+    <label htmlFor="exampleInputname1">Details</label>
+    <input type="text" className="form-control"  name="details" placeholder="Enter Name" 
+      value={user.details}
+      onChange={handleInputs}
     />
   </div>
-  <div class="form-group">
-    <label for="exampleInputtype1">Public Address</label>
-    <input type="text" class="form-control" id="exampleInputtype1" aria-describedby="nameHelp"
-     placeholder="Enter type" 
-     value={add}
-     onChange={handleChangeadd}
-     name="address"
-     />
-  </div>
-  
+  <div className="form-group">
+    <label htmlFor="exampleInputtype1">Public Address</label>
+    <input type="text" className="form-control"  name='publicaddress' placeholder="Enter Address of Patient" 
+      value={user.publicaddress}
+      onChange = {handleInputs}
+    />
+    </div>
+
+
 
 <br></br>
 
-  <button onClick={handleSubmit} class="btn btn-primary">Submit</button>
+  <button type="submit">Submit</button>
 </form>
-    </div>
+</>
   )
 }
 
