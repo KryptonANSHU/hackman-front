@@ -12,7 +12,7 @@ function Ipfsupload(props) {
       const added = await client.add(file)
       const url = `https://ipfs.infura.io/ipfs/${added.path}`
       updateFileUrl(url)
-      console.log('hi')
+      //console.log('hi')
       console.log(added.path)
     } catch (error) {
       console.log('Error uploading file: ', error)

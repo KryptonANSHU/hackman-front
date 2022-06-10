@@ -11,28 +11,8 @@ const upload = () => {
   const [url,setUrl] = useState(``)
   const [dets, setDets] = useState("")
   const [add,setAdd] = useState("")
-  // const [data,setData]=useState({
-  //   ipfs:"",
-  //   details:"",
-  //   address:""
-  // })
 
   const contractAddress="0xab70eB5255f74Ebe0fb5A4Cb9b293B78e0070125"
-
-  
-
-  // async function onChange(e) {
-  //   const file = e.target.files[0]
-  //   try {
-  //     const added = await client.add(file)
-  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`
-  //     updateFileUrl(url)
-  //     // console.log('hi')
-  //     // console.log(added.path)
-  //   } catch (error) {
-  //     console.log('Error uploading file: ', error)
-  //   }  
-  // }
   function handleChangedets(e){
     setDets(e.target.value)
   }
@@ -92,7 +72,7 @@ const upload = () => {
   }
   return (
     <div>
-    <form>
+    <form action='/doctor'>
   <div className="form-group">
   <div className="App">
       <h1>Upload Prescription</h1>
